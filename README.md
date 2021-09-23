@@ -79,6 +79,7 @@ For the environment setup, it's strongly recommended to use our provided docker 
 
 - `rm -rf build && mkdir build && cd build && cmake .. && make`
 
+- Download masks from https://archive.cs.rutgers.edu/archive/a/2021/pracsys/2021_iros_bundletrack/masks.tar.gz, extract and put in the repo so it becomes `masks/...`
 
 
 ## Run predictions on NOCS
@@ -108,7 +109,7 @@ For the environment setup, it's strongly recommended to use our provided docker 
 - Finally, the results will be saved in `/tmp/BundleTrack/`
 
 
-- For evaluating on the entire NOCS Dataset (by default this will add perturbation to the initial ground-truth pose), run
+- For evaluating on the entire NOCS Dataset, [download the converted text pose files from here](https://archive.cs.rutgers.edu/archive/a/2021/pracsys/2021_iros_bundletrack/real_test_text.tar.gz), and put it like `NOCS/gts/real_test_text`. Then run (**NOTE that this will add noise to perturb the initial ground-truth pose for evaluation as explained in the paper**)
   ```
   python scripts/eval_nocs.py --nocs_dir [PAHT TO NOCS]  --results_dir [PATH TO THE RUNNING OUTPUTS]
   ```
@@ -116,7 +117,7 @@ For the environment setup, it's strongly recommended to use our provided docker 
 
 ## Run predictions on YCBInEOAT
 
-- Download YCBInEOAT from https://archive.cs.rutgers.edu/archive/a/2020/pracsys/Bowen/iros2020/YCBInEOAT/
+- [Download YCBInEOAT](https://archive.cs.rutgers.edu/archive/a/2020/pracsys/Bowen/iros2020/YCBInEOAT/). Then [download YCB-Video object models](https://drive.google.com/file/d/1gmcDD-5bkJfcMKLZb3zGgH_HUFbulQWu/view) and put it under the YCBInEOAT folder. Change the `model_name` and `model_dir` in `config_ycbineoat.yml` to the path to the .obj file (e.g. .../YCB_Video_Dataset/CADmodels/021_bleach_cleanser/textured_simple.obj)
 
 - Open a separate terminal and run
 
